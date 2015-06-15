@@ -1,0 +1,29 @@
+<html ng-app="theFrog">
+<head>
+	<title>The Frog</title>
+	<script src="lib/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/theFrogCtrl.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css"/>
+</head>
+<body ng-controller="theFrogCtrl">
+	<div class="jumbotron">
+		<h3>{{title}}</h3>
+		<h4 style="font-weight: bold;">Distance: {{distance}}</h4>
+		<table class="table">
+			<tr ng-repeat="trail in trailsFormated">
+				<td>{{$index +1}}</td>
+				<td>{{trail}}</td>
+			</tr>
+		</table>
+
+		Number of different combinations: {{trailsFormated.length}}
+		<input class="form-control" type="number" ng-model="frog.distance" placeholder="Insert a distance">
+		
+		<button class="btn btn-primary btn-block" ng-click="startMoving(frog.distance)" ng-disabled="!frog.distance || frog.distance<0">Apply!</button>
+
+	</div>
+	<div ng-include="'footer.html'"></div>
+</body>
+</html>
